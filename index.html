@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>أبو بندر - مكنب استخراج تصاريح زواج</title>
+  <!-- تضمين مكتبة Font Awesome للأيقونات -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <link href="bootstrap.css" rel="stylesheet">
+     
+
+     
+  <style>
+  @font-face {
+    font-family: "MyCustomFont";
+    src: url("HacenTunisiaBd.ttf") format("truetype");
+}
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+height: 100vh;
+            margin: 0;
+            background: linear-gradient(to right, #061D3A, #000005); /* #000000 هو الأسود و #8B4513 هو البني */
+    font-family: 'HacenTunisiaBd', sans-serif;
+
+    }
+
+    /* بار علوي */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: left;
+background: linear-gradient(to right, #061D3A, #000005); 
+      padding: 10px 20px;
+      border-bottom: 0.5px solid white;
+      
+      color: gold;
+      position: relative;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: gold;
+    }
+
+    .navbar ul {
+      display: flex;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      position: center;
+    }
+
+    .navbar li {
+      margin: 0 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: gold;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar a i {
+      margin-left: 10px;
+    }
+
+    .language-selector {
+      cursor: pointer;
+    }
+
+    /* تصميم قائمة جانبية */
+    .sidebar {
+      background: linear-gradient(to right, #061D3A, #000005);
+      position: fixed;
+      top: 0;
+      left: -250px;
+      height: 100%;
+      width: 250px;
+      padding-top: 60px;
+      margin-top: 80px;
+      transition: 0.3s;
+    }
+
+    .sidebar a {
+      
+      padding: 10px 15px;
+      text-decoration: none;
+      font-size: 18px;
+      color: gold;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #000000;
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    /* زر القائمة الجانبية (الهامبرغر) */
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      color: gold;
+      font-size: 30px;
+      transition: 0.3s;
+    }
+
+    .menu-toggle.open {
+      transform: rotate(90deg);
+    }
+
+    /* تصميم الشاشات الصغيرة */
+    @media (max-width: 768px) {
+      .navbar ul {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .navbar .language-selector {
+        display: none;
+      }
+    }
+   
+   
+           .icon-container {
+            position: relative;
+        }
+
+        .main-icon {
+            width: 50px;
+            height: 50px;
+            
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            color: white;
+            font-size: 24px;
+        }
+
+        .sub-icons {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            bottom: 60px; /* Adjust to position the sub-icons */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .sub-icon {
+            width: 50px;
+            height: 50px;
+            margin: 5px 0;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 16px;
+        }
+  </style>
+</head>
+<body>
+
+
+<div class="icon-container" style="margin-top:150%; margin-right:4px; position: fixed; Z-index:2" width="90">
+    <div class="main-icon" onclick="toggleSubIcons()">
+      <img src="bg/call2.png" style="" width="90">
+    </div>
+    <div class="sub-icons" id="subIcons">
+        <div class="sub-icon">  <img src="bg/c1.png" style="" width="90"onclick="window.open('sms:966554633584+', '_blank')"></div>
+        <div class="sub-icon">  <img src="bg/c2.png" style="" width="90" onclick="c2()"></div>
+        
+         <script>
+                function c2(){
+                  var n = "966554633584+"
+                  window.location.href = "tel:" + n;
+                }
+              </script>
+        
+        <div class="sub-icon">  <img src="bg/c3.png" style="" width="90"onclick="window.open('https://wa.me/966554633584+', '_blank')"></div>
+    </div>
+</div>
+
+<script>
+    function toggleSubIcons() {
+        const subIcons = document.getElementById('subIcons');
+        if (subIcons.style.display === 'none' || subIcons.style.display === '') {
+            subIcons.style.display = 'flex';
+        } else {
+            subIcons.style.display = 'none';
+        }
+    }
+</script>
+
+
+
+
+
+    <a href="#" ><img src="bg/up.png" style="margin-top:150%; margin-right:300px; position: fixed; Z-index:2" width="40"></a>
+    
+    
+    
+  <!-- بار علوي -->
+  <div class="navbar">
+    <div class="logo"> 
+</div>
+    
+   
+         <img src="bg/logo2.png" style="width:30%; margin-left: 130px">
+              <img src="bg/whats.webp" style="max-width:10%;" onclick="window.open('https://wa.me/966554633584+', '_blank')">
+             
+    <ul>
+      <li><a href=""><i class="fas fa-home"></i> الرئيسية</a></li>
+      <li><a href="service.html"><i class="fas fa-cogs"></i> خدماتنا</a></li>
+
+      <li><a href="contact.html"><i class="fas fa-phone-alt"></i> اتصل بنا</a></li>
+    </ul>
+  
+    <div class="menu-toggle" id="menuToggle" onclick="toggleSidebar()">
+      &#9776;
+    </div>
+  </div>
+
+  <!-- قائمة جانبية -->
+  <div id="sidebar" class="sidebar">
+    <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a>
+    <a href="service.html"><i class="fas fa-cogs"></i> خدماتنا</a>
+
+    <a href="contact.html"><i class="fas fa-phone-alt"></i> اتصل بنا</a>
+ 
+  </div>
+
+  <script>
+    // دالة لتبديل القائمة الجانبية
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const menuToggle = document.getElementById('menuToggle');
+      sidebar.classList.toggle('open');
+      menuToggle.classList.toggle('open');
+    }
+
+    // دالة لتبديل اللغة
+    function toggleLanguage() {
+      const languageSelector = document.querySelector('.language-selector span');
+      if (languageSelector.textContent === 'العربية / English') {
+        languageSelector.textContent = 'English / العربية';
+      } else {
+        languageSelector.textContent = 'العربية / English';
+      }
+    }
+  </script>
+  
+
+
+ 
+<img src='bg/2.webp' style="background-attachment: fixed; max-width: 99%; height: auto; position: absolute; background-position: center; margin-top: 1800px;  Z-index: -1">
+
+
+
+
+
+<img src='bg/1.webp' style="background-attachment: fixed; max-width: 99%; height: auto; position: absolute; background-position: center; margin-top: 2950px;  Z-index: -1">
+
+
+
+<img src='bg/abubander.webp' style=" max-width: 100%; height: auto; position: flix;">
+
+
+
+<p style="color: white; text-align: center; margin-top: 20px; font: bold 12px red; padding:10px;">
+نفتخر بتقديم خدماتنا المميزة لأبناء الوطن والمقيمين الكرام، ونحرص على تسهيل وتذليل كافة الصعوبات أمامهم في سبيل إتمام معاملاتهم بكل سهولة ويسر، بدءاً من استخراج تصاريح زواج ووصولاً إلى مختلف الخدمات الأخرى.
+
+ثمن ثقة عملائنا الكرام الذين اعتمدوا علينا واعتبروا مكتبنا من أفضل مكاتب خدمات التعقيب في المملكة العربية السعودية، وذلك بفضل خبرتنا الطويلة وكفاءة فريقنا المتميز.
+
+نسعى دائماً لتقديم أفضل الخدمات بأعلى جودة، ونشكر كل من وضع ثقته بنا، ونتطلع لمزيد من التميز والنجاح.
+
+اتصل بنا الان واحصل على الرد من افضل محامي استخراج تصاريح زواج او اي معاملات آخر.</p>
+
+     <img src="bg/whatsno.webp" style="max-width:50%; margin-right:100px" onclick="window.open('https://wa.me/966554633584+', '_blank')">
+     
+     
+     
+<div class="container">
+  
+ <img src="bg/h.png" style="width:50%; margin-right: 90px">
+  
+  <img src="bg/line.webp" style="width:100%; position: center">
+   <img src="bg/ex.webp" style="max-width:100%; position: center; padding-top: 0">
+   
+  <div class="row align-items-center">
+    <div class="col-lg-4"><img src="bg/kh/kh1.webp" style="width:80%; height:80%; margin-right:40px"></div>
+    <div class="col-lg-4"><img src="bg/kh/kh2.webp" style="width:80%; height:80%; margin-right:40px; margin-top:10%"></div>
+     <div class="col-lg-4"><img src="bg/kh/kh3.webp" style="width:80%; height:80%; margin-right:40px; margin-top:10%"></div>
+  </div>
+  
+  
+  
+  
+  <a href="service.html"><img src="bg/more.webp" style="max-width:60%;height:70%; position: center; margin-right: 70px" ></a> 
+     
+    
+     
+     
+<img src="bg/h2.png" style="width:50%; margin-right: 90px">
+
+  <img src="bg/line.webp" style="width:100%; position: center">
+  
+  <div class="container">
+     <div class="row">
+    <div class="col-6">
+           <img src="bg/ad/ad1.webp" style="max-width:120%;">
+    </div>
+        <div class="col-6">
+      <img src="bg/ad/ad2.webp" style="max-width:120%;">
+    </div>
+
+  </div>  
+  
+  
+  
+  <div class="row" style="margin-top:20px">
+    <div class="col-6">
+           <img src="bg/ad/ad3.webp" style="max-width:120%;">
+    </div>
+        <div class="col-6">
+      <img src="bg/ad/ad4.webp" style="max-width:120%;">
+    </div>
+
+  </div> 
+  
+  
+  
+  
+    <div class="row" style="margin-top:20px">
+    <div class="col-6">
+           <img src="bg/ad/ad5.webp" style="max-width:120%;">
+    </div>
+        <div class="col-6">
+      <img src="bg/ad/ad6.webp" style="max-width:120%;">
+    </div>
+
+  </div> 
+  
+  
+  
+
+
+
+
+
+<img src="bg/h3.png" style="width:50%; margin-right: 90px; margin-top: 100px">
+  
+  <img src="bg/line.webp" style="width:100%; position: center">
+  
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
+    <div class="carousel-inner">
+        <div class="carousel-item active">t
+            <img src="bg/ara/ara1.webp" class="d-block w-100" alt="صورة 1">
+
+        </div>
+        <div class="carousel-item">
+            <img src="bg/ara/ara2.webp" class="d-block w-100" alt="صورة 2">
+        </div>
+        <div class="carousel-item">
+            <img src="bg/ara/ara3.webp" class="d-block w-100" alt="صورة 3">
+        </div>
+        <div class="carousel-item">
+            <img src="bg/ara/ara4.webp" class="d-block w-100" alt="صورة 4">
+        </div>
+        <div class="carousel-item">
+            <img src="bg/ara/ara5.webp" class="d-block w-100" alt="صورة 5">
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">السابق</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">التالي</span>
+    </a>
+</div>
+
+<!-- ربط jQuery و Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+  
+  
+  
+  <div style="display: none">
+    <img src="bg/info/info1.webp" style="width:100%; position: center">
+  
+  
+      <img src="bg/info/info2.webp" style="width:100%; position: center">
+  
+  
+    <img src="bg/info/info3.webp" style="width:100%; position: center">
+  
+  
+  <img src="bg/q.png" style="width:40%; margin-left: 90p; margin-top:10px">
+
+  
+  
+ 
+ 
+ 
+ 
+ 
+     <div class="dropdown">
+  <span class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: 000005; border-bottom: solid 0.5px gold; border-top: solid 0.5px gold; Font: bold 15px gold; color: gold; width:105%; padding:20px; text-align: right">
+    كيف يتم استخراج تصريح زواج  ؟        
+  </span>
+  <ul class="dropdown-menu" style="width: 105%; background: linear-gradient(to right, #061D3A, #000005); ">
+    <pre style="font-weight: bold; margin-top:10px; font-size:15px; color: white; text-align: right; padding:0; direction: rtl; width: 100%">
+      لاستخراج تصريح زواج في مكتب أبو بندر ، يمكنك اتباع الخطوات التالية:
+1. قم بتسجيل الدخول على بوابة ناجز بحساب النفاذ الوطني.
+2. اختر جميع الخدمات الإلكترونية ثم اختر باقة الحالات الاجتماعية.
+3. بعد ذلك، قم بالدخول إلى خدمة إنشاء عقد زواج واضغط على أيقونة استخدام الخدمة.
+4. سيُطلب منك إدخال البيانات المطلوبة مثل بيانات الزوجة، حالة الزوجة، بيانات الزوج، بيانات ولي الزوجة، الفحص الطبي، المهر، شروط الزوج، وشروط الزوجة.
+5. بعد استكمال جميع البيانات المطلوبة، ستتم مراجعتها وتأكيدها من قبل الجهات المعنية، ثم سيتم إصدار تصريح الزواج بعد ذلك.
+
+نحن في مكتب أبو بندر  نفخر بتقديم خدماتنا بسرعة وكفاءة، ونسعى دائمًا لضمان حصولكم على جميع الوثائق القانونية المطلوبة بأسهل الطرق الممكنة.
+
+    </pre>
+   
+  </ul>
+</div>
+
+
+     <div class="dropdown">
+  <span class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: 000005; border-bottom: solid 0.5px gold; border-top: solid 0.5px gold; Font: bold 15px gold; color: gold; width:105%; padding:20px; text-align: right">
+  شروط استخراج تصريح زواج ؟        
+  </span>
+  <ul class="dropdown-menu" style="width: 105%; background: linear-gradient(to right, #061D3A, #000005); ">
+   <pre style="font-weight: bold; margin-top:10px; font-size:15px; color: white; text-align: right; padding:0; direction: rtl; width: 100%">
+     
+     </pre>
+   
+  </ul>
+</div>
+
+
+
+     <div class="dropdown">
+  <span class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: 000005; border-bottom: solid 0.5px gold; border-top: solid 0.5px gold; Font: bold 15px gold; color: gold; width:105%; padding:20px; text-align: right">
+    ماهي خدماتنا  ؟        
+  </span>
+  <ul class="dropdown-menu" style="width: 105%; background: linear-gradient(to right, #061D3A, #000005); ">
+   <pre style="font-weight: bold; margin-top:10px; font-size:15px; color: white; text-align: right; padding:0; direction: rtl; width: 100%">
+     
+     </pre>
+  </ul>
+</div>
+
+
+
+     <div class="dropdown">
+  <span class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: 000005; border-bottom: solid 0.5px gold; border-top: solid 0.5px gold; Font: bold 15px gold; color: gold; width:105%; padding:20px; text-align: right">
+    ما هي خدمات مكتبنا في استخراج تصاريح زواج ؟         
+  </span>
+  <ul class="dropdown-menu" style="width: 105%; background: linear-gradient(to right, #061D3A, #000005); ">
+<pre style="font-weight: bold; margin-top:10px; font-size:15px; color: white; text-align: right; padding:0; direction: rtl; width: 100%">
+     
+     </pre>
+  </ul>
+</div>
+
+
+
+
+     <div class="dropdown">
+  <span class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: 000005; border-bottom: solid 0.5px gold; border-top: solid 0.5px gold; Font: bold 15px gold; color: gold; width:105%; padding:20px; text-align: right">
+    رقم معقب استخراج تصريح زواج ؟        
+  </span>
+  <ul class="dropdown-menu" style="width: 105%; background: linear-gradient(to right, #061D3A, #000005); ">
+<pre style="font-weight: bold; margin-top:10px; font-size:15px; color: white; text-align: right; padding:0; direction: rtl; width: 100%">
+     
+     </pre>
+  </ul>
+</div>
+
+
+
+
+     <div class="dropdown">
+  <span class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: 000005; border-bottom: solid 0.5px gold; border-top: solid 0.5px gold; Font: bold 15px gold; color: gold; width:105%; padding:20px; text-align: right">
+    هل يجوز للسعودي ان يتزوج اجنبية؟
+  </span>
+  <ul class="dropdown-menu" style="width: 105%; background: linear-gradient(to right, #061D3A, #000005); ">
+<pre style="font-weight: bold; margin-top:10px; font-size:15px; color: white; text-align: right; padding:0; direction: rtl; width: 100%">
+     
+     </pre>
+  </ul>
+</div>
+
+
+
+
+     <div class="dropdown">
+  <span class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: 000005; border-bottom: solid 0.5px gold; border-top: solid 0.5px gold; Font: bold 15px gold; color: gold; width:105%; padding:20px; text-align: right">
+    ما هي شروط زواج السعودي من اجنبية ؟ِ
+  </span>
+  <ul class="dropdown-menu" style="width: 105%; background: linear-gradient(to right, #061D3A, #000005); ">
+<pre style="font-weight: bold; margin-top:10px; font-size:15px; color: white; text-align: right; padding:0; direction: rtl; width: 100%">
+     
+     </pre>
+  </ul>
+</div>
+
+
+
+
+
+     <div class="dropdown">
+  <span class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: 000005; border-bottom: solid 0.5px gold; border-top: solid 0.5px gold; Font: bold 15px gold; color: gold; width:105%; padding:20px; text-align: right">
+    ما هي شروط استخراج تصريح زواج سعودية من اجنبي ؟ِ
+  </span>
+  <ul class="dropdown-menu" style="width: 105%; background: linear-gradient(to right, #061D3A, #000005); ">
+<pre style="font-weight: bold; margin-top:10px; font-size:15px; color: white; text-align: right; padding:0; direction: rtl; width: 100%">
+     
+     </pre>
+  </ul>
+</div></div>  </div>
+
+ 
+ 
+ 
+ 
+ 
+  <img src="bg/w.png" style="width:70%; margin-right: 60px; margin-top:20px">
+  <p style="font: bold 15px white; color: white; text-align: center;">
+    تصريح الزواج هو وثيقة رسمية تصدرها السلطات المختصة في الدولة، وتحتوي على معلومات حول الأزواج المراد تسجيل زواجهما، مثل الأسماء والهويات والعناوين والشهادات الصادرة عن الجهات المختصة.
+
+يتم تقديم تصريح الزواج كجزء من إجراءات تسجيل الزواج وتثبيته رسمياً.
+  </p>
+ 
+ 
+ 
+ 
+ 
+   <img src="bg/i.png" style="width:70%; margin-right: 60px; margin-top:20px">
+  <p style="font: bold 15px white; color: white; text-align: center; margin-top: 20px">
+    أهمية الحصول على شهادة الزواج في المملكة العربية السعودية. تعتبر شهادة الزواج بمثابة وثيقة قانونية ورسمية تثبت زواج رجل وامرأة حسب نظام الأحوال في المملكة العربية السعودية. كما أنه يحمي حقوق الأزواج والأبناء، ويتيح لهم الاستفادة من مختلف الخدمات والحقوق التي تقدمها الدولة للمتزوجين. يساعد الحصول على شهادة الزواج على تنظيم عملية الزواج والتأكد من شرعيته ومنع الزواج غير الشرعي وحماية حقوق كلا الزوجين في حالة الطلاق.
+    </p>
+ 
+ 
+  
+  
+  
+     <img src="bg/f.png" style="width:40%; margin-right: 115px; margin-top:20px; margin-bottom: 10px"><br>
+     <div style="margin-right:15%; margin-left:10%">
+    <a href="https://www.instagram.com/anjaz_2010?igsh=bGxvbXk3dGIxNWFz"><img src="bg/ins.webp"></a>
+    
+    <a href="https://www.facebook.com/share/158mtNHSgp/"><img src="bg/fb.webp" style="width:60px"></a>
+    
+    <a href="https://x.com/enjaz519?t=-HLO2i_sNpR13vo6hDEx9A&s=09"> <img src="bg/tw.webp"></a>
+    
+     <img src="bg/whats.webp" style="width: 23%" onclick="window.open('https://wa.me/966554633584+', '_blank')">
+     </div>
+
+     
+     
+     
+     
+     
+     
+  
+  
+  
+   <img src="bg/a.png" style="width:50%; margin-right: 90px; margin-top: 30px">
+  
+  <img src="bg/line.webp" style="width:100%; position: center">
+    <p style="font: bold 15px white; color: white; text-align: center; margin-top: 20px">
+      نحن فريق خبراء متكامل نهدف إلى تسهيل جميع المعاملات بكفاءة وسرعة، وبدقة واحترافية عالية لضمان معالجة كافة الإجراءات، مما يساعدك على تجنب التعقيدات وفقدان الوقت. 
+اعتمد على خبرتنا واتصل بنا اليوم لتجربة تعامل مميزة وموثوقة، حيث نسعى لتلبية احتياجاتك بأفضل الطرق وتحقيق أقصى رضا.
+      </p>
+   
+   
+   
+   
+        <img src="bg/et.webp" style="max-width:60%;height:70%; position: center; margin-right: 70px" onclick="window.open('https://wa.me/966554633584+', '_blank')">
+   
+   
+   
+   
+   
+   
+   <div class="row">
+     <div class="col-6" style="width: 100; height: 30px; background-color: #000005; border: 5px double #ffd700; border-radius:25px ; padding:3px; color: gold; Font: bold 10px gold; text-align: right">
+       #استخراج تصريح زواج سعودي من أجنبية
+     </div>
+      
+ <div class="col-6" style="width: 100; height: 30px; background-color: #000005; border: 5px double #ffd700; border-radius:25px ; padding:3px; color: gold; Font: bold 10px gold; text-align: right">
+      #مكتب استخراج تصريح زواج 
+     
+     </div>
+   </div>
+   
+   
+   
+      <div class="row" style="margin-top:10px">
+     <div class="col-6" style="width: 100; height: 30px; background-color: #000005; border: 5px double #ffd700; border-radius:25px ; padding:3px; color: gold; Font: bold 10px gold; text-align: right">
+#استخراج تصريح زواج 
+     </div>
+      
+ <div class="col-6" style="width: 100; height: 30px; background-color: #000005; border: 5px double #ffd700; border-radius:25px ; padding:3px; color: gold; Font: bold 10px gold; text-align: right">
+#معقب تصريح الزواج    
+     </div>
+   </div>
+   
+   
+   
+   <div class="row" style="margin-top:10px">
+     <div class="col-6" style="width: 100; height: 30px; background-color: #000005; border: 5px double #ffd700; border-radius:25px ; padding:3px; color: gold; Font: bold 10px gold; text-align: right">
+       #استخراج تصريح زواج سعودي من أجنبية مقيمة
+     </div>
+      
+ <div class="col-6" style="width: 100; height: 30px; background-color: #000005; border: 5px double #ffd700; border-radius:25px ; padding:3px; color: gold; Font: bold 10px gold; text-align: right">
+     #محامي استخراج تصريح زواج 
+     </div>
+   </div>
+   
+   
+    <div class="row" style="margin-top:10px">
+     <div class="col-6" style="width: 100; height: 30px; background-color: #000005; border: 5px double #ffd700; border-radius:25px ; padding:3px; color: gold; Font: bold 10px gold; text-align: right">
+       #معقب استخراج تصريح زواج 
+     </div>
+      
+ <div class="col-6" style="width: 100; height: 30px; background-color: #000005; border: 5px double #ffd700; border-radius:25px ; padding:3px; color: gold; Font: bold 10px gold; text-align: right">
+     استخراج تصريح زواج من مقيمة
+     </div>
+   </div>
+   
+   
+ <div class="row" style="margin-top:10px">
+     <div class="col-6" style="width: 100; height: 30px; background-color: #000005; border: 5px double #ffd700; border-radius:25px ; padding:3px; color: gold; Font: bold 10px gold; text-align: right">
+       #تصريح زواج سعودي من اجنبية
+     </div>
+      
+ <div class="col-6" style="width: 100; height: 30px; background-color: #000005; border: 5px double #ffd700; border-radius:25px ; padding:3px; color: gold; Font: bold 10px gold; text-align: right">
+     #استخراج تصريح زواج سعودي من أجنبية غير مقيمة
+     </div>
+   </div>
+   
+   
+ <div class="row" style="margin-top:10px">
+     <div class="col-6" style="width: 100; height: 30px; background-color: #000005; border: 5px double #ffd700; border-radius:25px ; padding:3px; color: gold; Font: bold 10px gold; text-align: right">
+       #تصريح زواج من مقيمة
+     </div>
+      
+ <div class="col-6" style="width: 100; height: 30px; background-color: #000005; border: 5px double #ffd700; border-radius:25px ; padding:3px; color: gold; Font: bold 10px gold; text-align: right">
+     #تصاريح الزواج من الخارج
+     </div>
+   </div>
+   
+   
+   
+ <div class="row" style="margin-top:10px">
+     <div class="col-6" style="width: 100; height: 30px; background-color: #000005; border: 5px double #ffd700; border-radius:25px ; padding:3px; color: gold; Font: bold 10px gold; text-align: right">
+       #اصدار تصريح زواج من اجنبية
+     </div>
+      
+ <div class="col-6" style="width: 100; height: 30px; background-color: #000005; border: 5px double #ffd700; border-radius:25px ; padding:3px; color: gold; Font: bold 10px gold; text-align: right">
+     #استخراج تصريح زواج من مقيمة
+     </div>
+   </div>
+   
+   
+   
+ <div class="row" style="margin-top:10px">
+     <div class="col-6" style="width: 100; height: 30px; background-color: #000005; border: 5px double #ffd700; border-radius:25px ; padding:3px; color: gold; Font: bold 10px gold; text-align: right">
+       #مكاتب استخراج تصاريح زواج
+     </div>
+      
+ <div class="col-6" style="width: 100; height: 30px; background-color: #000005; border: 5px double #ffd700; border-radius:25px ; padding:3px; color: gold; Font: bold 10px gold; text-align: right">
+     #معقب موافقة زواج تصريح زواج 
+     </div>
+   </div>
+   
+   
+ <div class="row" style="margin-top:10px">
+     <div class="col-6" style="width: 100; height: 30px; background-color: #000005; border: 5px double #ffd700; border-radius:25px ; padding:3px; color: gold; Font: bold 10px gold; text-align: right">
+       #استخراج تصريح زواج في السعودية 
+     </div>
+      
+ <div class="col-6" style="width: 100; height: 30px; background-color: #000005; border: 5px double #ffd700; border-radius:25px ; padding:3px; color: gold; Font: bold 10px gold; text-align: right">
+     #استخراج تصريح زواج من اجنبية
+     </div>
+   </div>
+   
+   
+   
+ <div class="row" style="margin-top:10px">
+     <div class="col-6" style="width: 100; height: 30px; background-color: #000005; border: 5px double #ffd700; border-radius:25px ; padding:3px; color: gold; Font: bold 10px gold; text-align: right">
+       #استخراج تصريح زواج سعودية من اجنبي
+     </div>
+      
+ <div class="col-6" style="width: 100; height: 30px; background-color: #000005; border: 5px double #ffd700; border-radius:25px ; padding:3px; color: gold; Font: bold 10px gold; text-align: right">
+     #استخراج تصريح زواج السعودية
+     </div>
+   </div>
+   
+   
+   
+ <div class="row" style="margin-top:10px">
+     <div class="col-6" style="width: 100; height: 30px; background-color: #000005; border: 5px double #ffd700; border-radius:25px ; padding:3px; color: gold; Font: bold 10px gold; text-align: right">
+       #استخراج تصريح زواج سعودية
+     </div>
+      
+ <div class="col-6" style="width: 100; height: 30px; background-color: #000005; border: 5px double #ffd700; border-radius:25px ; padding:3px; color: gold; Font: bold 10px gold; text-align: right">
+     #اجراءات استخراج تصريح زواج 
+     </div>
+   </div>
+   
+   
+   
+ <div class="row" style="margin-top:10px">
+     <div class="col-6" style="width: 100; height: 30px; background-color: #000005; border: 5px double #ffd700; border-radius:25px ; padding:3px; color: gold; Font: bold 10px gold; text-align: right">
+       #مكاتب استخراج تصريح زواج الرياض 
+     </div>
+      
+ <div class="col-6" style="width: 100; height: 30px; background-color: #000005; border: 5px double #ffd700; border-radius:25px ; padding:3px; color: gold; Font: bold 10px gold; text-align: right">
+     #مكاتب خدمات أخرى 
+     </div>
+   </div>
+   <br>
+   
+  
+  <pre style="direction: rtl; text-align: right; Font: bold 10px gold; color: gold">
+    اخذ موافقه زواج 
+شروط استخراج موافقة زواج
+شروط تقديم موافقة زواج
+كيف اخذ موافقة زواج
+شروط الحصول على موافقة زواج
+الاوراق المطلوبه في ستخراج موافقة زواج
+شروط التقديم تكلفه موافقة زواج
+مواعد الحجزالملكه
+استخراج موافقة زواج مواطن من اجنبيه
+استخراج موافقة زواج سعودي من اجنبية
+أستخراج موافقة زواج مواطن من مقيمة
+استخراج موافقة زواج سعودي من مقيمة
+استخراج موافقة زواج مواطنه من اجنبي
+استخراج موافقة زواج سعوديه من اجنبي
+إمارة منطقة الثقيله
+إمارة منطقة المبرز
+إمارة منطقة الهفوف
+إمارة منطقة رابغ
+إمارة منطقة شريقة
+إمارة منطقة شقراء
+إمارة منطقة غراب
+إمارة منطقة عرعر
+إمارة منطقة عفيف
+إمارة منطقة ينبع
+إمارة منطقة وادي الدواسر
+إمارة منطقة نجران
+إمارة منطقة عنيزة
+إمارة منطقة عسير
+إمارة منطقة طريق
+إمارة منطقة سكاكا
+إمارة منطقة خميس مشيط
+إمارة منطقة حريملاء
+إمارة منطقة جدة
+إمارة منطقة ثادق
+إمارة منطقة أبها
+إمارة منطقة البكيرية
+إمارة منطقة الخبر
+إمارة منطقة الخراج
+إمارة منطقة الدرعية
+إمارة منطقة الدوادمي
+إمارة منطقة الطائف
+إمارة منطقة القطيف
+إمارة منطقة المجمعة
+إمارة منطقة المزاحمية
+امارة منطقة بريدة
+إمارة منطقة بيشة
+إمارة منطقة المنطقة الشمالية
+إمارة منطقة القويعية امارة منطقة القصيم
+إمارة منطقة الزلفي
+إمارة منطقة الظهران
+إمارة منطقة الرس
+إمارة منطقة الدمام
+إمارة منطقة الخرج
+إمارة منطقة الجبيل
+إمارة منطقة الأحساء
+إمارة منطقة القريات
+  </pre>
+  
+  
+  
+    <pre style="direction: rtl; text-align: right; Font: bold 13px gold; color: gold; margin-left; 1000px">
+شروط تصريح زواج سعودي من اجنبيه
+اجراءات تصريح الزواج من الخارج
+اذن زواج من اجنبية
+استثناء تصريح الزواج
+استخراج امر زواج تصريح زواج من مواطن سعودي الى اجنبية
+استخراج تصريح زواج سعودي من اجنبية
+استخراج تصريح زواج سعودية من اجنبي
+استخراج تصريح زواج من أجنبية
+استخراج تصريح زواج من اجنبيه
+اصدار تصريح زواج من اجنبيه
+التأكد من تصريح الزواج
+الحصول على تصريح زواج من اجنبية
+الزواج بدون تصريح
+الزواج من أجنبي بدون تصريح
+امر زواج من الخارج
+تصحيح زواج بدون تصريح
+تصحيح وضع زواج بدون تصريح 1441
+تصحيح وضع زواج بدون تصريح 1443
+تصحيح وضع زواج بدون تصريح 2020
+تصحيح وضع زواج سعودي من اجنبية
+تصريح الزواج من خليجي
+تصريح الزواج وزارة الخارجية
+تصريح زواج سعودي من مقيمة
+تصريح زواج عسكري من أجنبية
+تصريح زواج للعسكري
+تصريح زواج من غير سعودية
+تقديم طلب تصريح زواج
+تقديم طلب تصريح زواج من الخارج
+خطوات استخراج تصريح زواج
+شروط استخراج تصريح زواج من اجنبية
+شروط التصريح للزواج من الخارج
+شروط الحصول على تصريح زواج من اجنبية
+شروط تصريح الزواج
+شروط تصريح زواج سعودي من مغربية
+طريقة استخراج تصريح زواج من مقيمه
+طريقة التقديم على تصريح زواج من الخارج
+طريقة تقديم طلب تصريح زواج من الخارج
+طريقة طلب تصريح زواج من الخارج
+طلب تصريح زواج الكتروني
+كيفية استخراج تصريح زواج من الخارج
+مدة تصريح الزواج من اجنبية
+مدة صلاحية تصريح الزواج من الخارج
+معقب زواج من الخارج
+نموذج تصريح زواج من الخارج
+نموذج طلب تصريح زواج
+واسطة لاستخراج تصريح زواج
+وزارة الخارجية تصريح الزواج
+تصحيح وضع زواج بدون تصريح 2021
+تصريح زواج عماني من مغربية
+معقب تصريح زواج 2020
+مكتب استعخراج تصريح زواج
+    </pre>
+  
+  
+  
+  <pre style="direction: rtl; text-align: right; Font: bold 13px gold; color: gold; margin-left; 1000px">
+    
+    </pre>
+    
+    
+    
+    
+
+
+
+
+    
+    
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+  <footer style="font-size: 30px; font: bold 30px gold; color: gold; padding-top:7px; position: relative; text-align: center; width:100%; height:40px; margin:0; background-color: #041735; box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5)">
+    <p style="font-size:13px">جميع الحقوق محفوظة &copy;  مكتب أبو بندر</p>
+  
+  </footer>
+
+
+
+
+
+
+  <script src="script.js"></script>
+  <script src="bootstrap.js"></script>
+</body>
+</html>
